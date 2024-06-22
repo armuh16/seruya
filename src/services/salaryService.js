@@ -16,4 +16,3 @@ async function getDriverSalaries(month, year, current, page_size) {
 module.exports = {
     getDriverSalaries,
 };
-
