@@ -1,23 +1,39 @@
-import React from 'react';
-import DriverForm from './components/DriverForm';
-import DriverList from './components/DriverList';
-import DriverSalaryForm from './components/DriverSalaryForm';
-import DriverAttendanceForm from './components/DriverAttendanceForm';
-import ShipmentForm from './components/ShipmentForm';
-import ShipmentCostForm from './components/ShipmentCostForm';
+import React, { useState } from 'react';
+import NavigationMenu from './components/NavigationMenu';
+import FetchDriverSalaries from './components/FetchDriverSalaries';
+import AddDriverAttendance from './components/AddDriverAttendance';
+import AddShipmentCost from './components/AddShipmentCost';
+import AddDriver from './components/AddDriver';
 
-const App = () => (
-    <div className="container">
-        <header>
-            <h1>Driver Management</h1>
-        </header>
-        <DriverForm />
-        <DriverList />
-        <DriverSalaryForm />
-        <DriverAttendanceForm />
-        <ShipmentForm />
-        <ShipmentCostForm />
-    </div>
-);
+const App = () => {
+    const [selectedAction, setSelectedAction] = useState(null);
+
+    const renderComponent = () => {
+        switch (selectedAction) {
+            case 'fetchDriverSalaries':
+                return <FetchDriverSalaries />;
+            case 'addDriverAttendance':
+                return <AddDriverAttendance />;
+            case 'addShipmentCost':
+                return <AddShipmentCost />;
+            case 'addDriver':
+                return <AddDriver />;
+            default:
+                return <p>Please select an action from the menu.</p>;
+        }
+    };
+
+    return (
+        <div className="container">
+            <header>
+                <h1>Driver Management</h1>
+            </header>
+            <NavigationMenu setSelectedAction={setSelectedAction} />
+            <div className="content">
+                {renderComponent()}
+            </div>
+        </div>
+    );
+};
 
 export default App;
