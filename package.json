@@ -1,0 +1,15 @@
+{
+  "name": "seruya",
+  "version": "1.0.0",
+  "description": "Project description",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "migrate": "psql -f src/database/migrations/migration.sql $DATABASE_URL"
+  },
+  "dependencies": {
+    "dotenv": "^8.6.0",
+    "express": "^4.19.2",
+    "pg": "^8.12.0"
+  }
+}
